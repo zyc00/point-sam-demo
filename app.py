@@ -321,8 +321,13 @@ def set_prompts():
     predictor.patches = patches
     predictor.input_processor.center = np.array(request_data["center"])
     predictor.input_processor.scale = request_data["scale"]
-    if request_data["prompt_mask"] is not None:
-        predictor.prompt_mask = torch.tensor(request_data["prompt_mask"]).cuda()
+    try:
+        if request_data["prompt_mask"] is not None:
+            predictor.prompt_mask = torch.tensor(request_data["prompt_mask"]).cuda()
+        else:
+            predictor.prompt_mask = None
+    except:
+        predictor.prompt_mask = None
     # instance_id = request_data["instance_id"]  # int
     if len(prompt_coords) == 0:
         predictor.prompt_mask = None
