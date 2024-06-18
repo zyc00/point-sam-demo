@@ -1,5 +1,8 @@
 # point-sam-demo
 
+## Note
+Our demo only supports .glb format meshes. If you have a mesh in .obj or .ply formats, please convert to .glb first.
+
 ## Install
 Install PyTorch by following [this](https://pytorch.org).
 
